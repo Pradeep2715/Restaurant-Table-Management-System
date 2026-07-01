@@ -1,52 +1,180 @@
-# Urban Crave - Restaurant Table Management System
+# 🍽️ Urban Crave - Restaurant Table Management System
 
-A premium, classically designed Table Management System for **Urban Crave**. This application allows restaurant staff to track table availability, book reservations with party counts and primary guest names, and release tables once dining sessions are completed.
-
----
-
-## 🔑 Login Credentials
-
-To access the management portal, use the following credentials on the login screen:
-- **Username**: `admin`
-- **Password**: `crave123`
-
----
+A modern and interactive Restaurant Table Management System built using **HTML, CSS, and JavaScript**. The application helps restaurants efficiently manage table reservations with an attractive dashboard, customer authentication, booking history, and responsive floor plan visualization.
 
 ## ✨ Features
 
-1. **Brand Identity**:
-   - **Unique Logo**: A custom-designed SVG symbol representing Urban Crave — featuring a golden monogram 'UC' intertwined with elegant dinner plate contours and crown-fork prongs.
-   - **Aesthetics**: Premium dark slate background with warm gold, emerald green (available), and rose red (reserved) neon-glow accent colors.
-2. **Interactive 2D Floor Plan**:
-   - Spatially visualizes 20 tables with varied seating capacities (2-seater, 4-seater, 6-seater, and VIP 8-seater rectangular booths).
-   - Dynamically renders seating arrangements (chairs) around each table.
-   - Interactive hover tooltips showing current reservation details or table capacities.
-3. **Reservation Workflow**:
-   - **Table Selection**: Click any table to inspect its status.
-   - **Table 5 / Booking**: Select an available table, input the guest's name, choose the party size (capped at that table's max capacity), and confirm.
-   - **State Control**: Check details of any reserved table (time of booking, name, party size) and release it when the guests check out.
-4. **Search and Filter Tools**:
-   - Filter tables instantly by status: **All**, **Available**, or **Reserved** (dims out non-matching tables while keeping spatial awareness).
-   - Search box to look up table numbers or active customer names.
-5. **Robust Persistence**:
-   - All reservation states are automatically synchronized with the browser's `localStorage` so configurations persist across tab closing and page refreshes.
+### 🔐 User Authentication
+- Login and Registration
+- Session Management
+- Customer Visit Tracking
+- User Badges
+
+### 🍽️ Smart Table Reservation
+- Interactive Restaurant Floor Plan
+- Reserve Tables
+- Cancel Reservations
+- Dynamic Seating Capacity
+- VIP Table Support
+
+### 📅 Pre Booking System
+- Book tables for future dates
+- Multiple Time Slots
+- Date Validation
+- Capacity Validation
+
+### 📊 Dashboard
+- Available Tables Count
+- Reserved Tables Count
+- Customer Booking History
+- Active Reservation Details
+
+### 🔍 Search & Filter
+- Search by Table Number
+- Search Reservations
+- Filter Available Tables
+- Filter Reserved Tables
+
+### 💾 Local Storage
+- Persistent User Accounts
+- Reservation Persistence
+- Automatic Data Recovery
+
+### 🎨 Modern UI
+- Responsive Design
+- Glassmorphism Effects
+- Smooth Animations
+- Interactive Tooltips
+- Elegant Restaurant Theme
 
 ---
 
-## 🛠️ File Structure
+## 🛠️ Technologies Used
 
-The project is built entirely on standard Web standards (Vanilla HTML, CSS, JavaScript) without any external dependency files:
-```text
-UrbanCrave_TableManagement/
-├── index.html   # HTML5 Semantic structure & brand SVG symbols
-├── styles.css   # Theme styling, layout positions, responsiveness, and animations
-└── app.js       # Core logic: authentication, local state, storage, and event bindings
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Local Storage API
+- Session Storage API
+
+---
+
+## 📂 Project Structure
+
+```
+UrbanCrave/
+│
+├── index.html          # Main HTML file
+├── styles.css          # Styling
+├── app.js              # Application Logic
+└── README.md
 ```
 
 ---
 
-## 🚀 How to Run
+## ⚙️ Installation
 
-1. Navigate to the project folder: `c:\Users\jampa\OneDrive\Documents\Pradeep\UrbanCrave_TableManagement`
-2. Open `index.html` in any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari) by double-clicking it.
-3. Alternatively, serve it locally using a server extension (like VS Code Live Server or Python's `http.server`).
+Clone the repository
+
+```bash
+git clone https://github.com/your-username/urban-crave.git
+```
+
+Go to the project folder
+
+```bash
+cd urban-crave
+```
+
+Open the project
+
+```text
+Open index.html in your browser
+```
+
+or use VS Code Live Server.
+
+---
+
+## 🎯 How It Works
+
+1. Register a new account.
+2. Login to the system.
+3. Select a booking date and time slot.
+4. Choose an available table.
+5. Enter party size.
+6. Confirm reservation.
+7. View booking history.
+8. Cancel reservation anytime.
+
+---
+
+## 📋 Main Functionalities
+
+- User Login & Signup
+- Session Authentication
+- Restaurant Floor Visualization
+- Dynamic Table Selection
+- Reservation Management
+- Booking History
+- Customer Statistics
+- Search & Filters
+- Responsive Interface
+
+---
+
+## 📱 Responsive Design
+
+The application works on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile Devices
+
+---
+
+## 🔒 Data Storage
+
+This project uses:
+
+- Local Storage
+- Session Storage
+
+No backend or database is required.
+
+---
+
+## 🌟 Future Enhancements
+
+- Admin Dashboard
+- Online Payments
+- Email Notifications
+- QR Code Table Check-in
+- Backend Integration
+- Database Support
+- Firebase Authentication
+- Food Ordering Module
+- Analytics Dashboard
+
+---
+
+## 👨‍💻 Author
+
+**Pradeep J**
+
+GitHub:  https://github.com/Pradeep2715
+
+LinkedIn:  https://www.linkedin.com/in/jampana-pradeep/
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please ⭐ the repository.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
