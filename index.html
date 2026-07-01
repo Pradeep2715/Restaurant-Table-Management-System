@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Crave | Table Management System</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ==========================================
+       AUTHENTICATION SECTION (LOGIN / SIGNUP)
+       ========================================== -->
+  <section id="login-section" class="auth-section">
+    <div class="background-decorations">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+    </div>
+    
+    <div class="login-card-wrapper">
+      <div class="login-card">
+        <div class="login-header">
+          <!-- Unique SVG Monogram/Symbol for Urban Crave -->
+          <div class="brand-logo-container">
+            <svg class="brand-logo" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4af37" />
+                  <stop offset="50%" stop-color="#f9e076" />
+                  <stop offset="100%" stop-color="#aa7c11" />
+                </linearGradient>
+                <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <!-- Stylized plate circle -->
+              <circle cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-dasharray="5 3" />
+              <!-- Outer solid glow ring -->
+              <circle cx="50" cy="50" r="36" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+              
+              <!-- Monogram UC and Cutlery -->
+              <!-- Letter U -->
+              <path d="M33 36 V52 C33 60, 42 64, 48 64" fill="none" stroke="url(#goldGradient)" stroke-width="3.5" stroke-linecap="round" />
+              <!-- Letter C -->
+              <path d="M67 36 H57 C48 36, 44 43, 44 50 C44 57, 48 64, 57 64 H67" fill="none" stroke="url(#goldGradient)" stroke-width="3.5" stroke-linecap="round" />
+              
+              <!-- Crown / Fork Prongs combined in center -->
+              <path d="M47 34 V42 M50 32 V42 M53 34 V42" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round" />
+              <!-- Central Stem -->
+              <path d="M50 42 V54" fill="none" stroke="url(#goldGradient)" stroke-width="2" />
+            </svg>
+          </div>
+          <h1>Urban Crave</h1>
+          <p class="subtitle">Table Reservation Portal</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <div class="input-wrapper">
+              <input type="text" id="username" autocomplete="username" placeholder="Enter your username" required>
+              <span class="input-icon">👤</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <input type="password" id="password" autocomplete="current-password" placeholder="••••••••" required>
+              <span class="input-icon">🔒</span>
+            </div>
+          </div>
+
+          <div class="auth-toggle-link">
+            <span>New customer? <a href="#" id="link-show-signup">Create an Account</a></span>
+          </div>
+
+          <button type="submit" class="btn-primary glow-btn full-width">
+            <span>Log In</span>
+          </button>
+        </form>
+
+        <!-- SIGNUP FORM (Hidden by default) -->
+        <form id="signup-form" class="signup-form hidden">
+          <div class="form-group">
+            <label for="signup-username">Create Username</label>
+            <div class="input-wrapper">
+              <input type="text" id="signup-username" autocomplete="username" placeholder="Choose a username" required>
+              <span class="input-icon">👤</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-password">Create Password</label>
+            <div class="input-wrapper">
+              <input type="password" id="signup-password" autocomplete="new-password" placeholder="Min. 4 characters" required>
+              <span class="input-icon">🔒</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-confirm-password">Confirm Password</label>
+            <div class="input-wrapper">
+              <input type="password" id="signup-confirm-password" autocomplete="new-password" placeholder="Re-enter password" required>
+              <span class="input-icon">🔑</span>
+            </div>
+          </div>
+
+          <div class="auth-toggle-link">
+            <span>Already have an account? <a href="#" id="link-show-login">Log In</a></span>
+          </div>
+
+          <button type="submit" class="btn-primary glow-btn full-width">
+            <span>Register Account</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAIN DASHBOARD
+       ========================================== -->
+  <section id="dashboard-section" class="dashboard-section hidden">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <div class="logo-group">
+          <svg class="brand-logo-small" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="3" stroke-dasharray="5 3" />
+            <circle cx="50" cy="50" r="36" fill="none" stroke="url(#goldGradient)" stroke-width="2" />
+            <path d="M33 36 V52 C33 60, 42 64, 48 64" fill="none" stroke="url(#goldGradient)" stroke-width="4" stroke-linecap="round" />
+            <path d="M67 36 H57 C48 36, 44 43, 44 50 C44 57, 48 64, 57 64 H67" fill="none" stroke="url(#goldGradient)" stroke-width="4" stroke-linecap="round" />
+            <path d="M47 34 V42 M50 32 V42 M53 34 V42" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M50 42 V54" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" />
+          </svg>
+          <div class="title-meta">
+            <h2>Urban Crave</h2>
+            <span class="badge" id="user-badge">Guest Account</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Panel: Table Details & Actions (Dynamically updated) -->
+      <div class="sidebar-card action-panel">
+        <h3 id="panel-title">Select a Table</h3>
+        
+        <div id="no-table-selected" class="panel-placeholder">
+          <div class="placeholder-icon">🍽️</div>
+          <p>Click on any table in the floor map to prebook or inspect reservations.</p>
+        </div>
+
+        <div id="table-details-panel" class="panel-content hidden">
+          <div class="table-badge-row">
+            <span id="selected-table-badge" class="table-number-tag">Table 00</span>
+            <span id="selected-table-status" class="status-tag tag-available">Available</span>
+          </div>
+          <p id="table-capacity-text" class="meta-capacity">Capacity: 4 Guests</p>
+          
+          <hr class="panel-divider">
+
+          <!-- Book Table Form (Active when Available) -->
+          <form id="booking-form" class="booking-form">
+            <div class="form-group">
+              <label for="booking-name">Guest Name (Primary Contact)</label>
+              <div class="input-wrapper">
+                <input type="text" id="booking-name" readonly required>
+                <span class="input-icon">👤</span>
+              </div>
+            </div>
+
+            <!-- Prebooking Schedule Display -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>Date</label>
+                <div class="input-wrapper">
+                  <input type="text" id="booking-date-display" readonly>
+                  <span class="input-icon">📅</span>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label>Time Slot</label>
+                <div class="input-wrapper">
+                  <input type="text" id="booking-time-display" readonly>
+                  <span class="input-icon">🕒</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="booking-guests">Party Size (Number of Members)</label>
+              <div class="input-wrapper">
+                <select id="booking-guests" required>
+                  <!-- Options filled dynamically based on capacity -->
+                </select>
+                <span class="input-icon">👥</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary full-width glow-btn">
+              <span>Confirm Prebooking</span>
+            </button>
+          </form>
+
+          <!-- Reservation Details (Active when Reserved) -->
+          <div id="reservation-info" class="reservation-info hidden">
+            <div class="info-row">
+              <span class="info-label">Guest:</span>
+              <span id="res-guest-name" class="info-value">John Doe</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Party Size:</span>
+              <span id="res-party-size" class="info-value">4 Members</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Reserved Date:</span>
+              <span id="res-date" class="info-value">2026-07-01</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Time Slot:</span>
+              <span id="res-time" class="info-value">06:00 PM - 08:00 PM</span>
+            </div>
+            
+            <!-- This button is only visible to the user who booked it -->
+            <button id="btn-release-table" class="btn-danger full-width">
+              <span>Cancel Reservation</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Visit History Panel -->
+      <div class="sidebar-card history-panel">
+        <h3>My Visit History</h3>
+        
+        <div class="user-stats-row">
+          <div class="user-stat-pill">
+            <span class="pill-lbl">Account Visits</span>
+            <strong id="user-visits-count">0</strong>
+          </div>
+          <div class="user-stat-pill">
+            <span class="pill-lbl">Active Bookings</span>
+            <strong id="user-bookings-count">0</strong>
+          </div>
+        </div>
+
+        <div id="history-list" class="history-list">
+          <!-- Dynamic reservation history items will go here -->
+          <div class="history-placeholder">No visits recorded yet.</div>
+        </div>
+      </div>
+
+      <!-- Footer / Guest Session -->
+      <div class="sidebar-footer">
+        <div class="staff-info">
+          <span class="staff-role">Welcome Back</span>
+          <span class="staff-name" id="display-username">Customer</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <!-- Reset Database Button -->
+          <button id="btn-reset-db" class="btn-logout" title="Reset All Data" style="color: #696975;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+          </button>
+          <!-- Log Out Button -->
+          <button id="btn-logout" class="btn-logout" title="Log Out">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="dashboard-main">
+      <header class="main-header">
+        <div class="header-welcome-prebook">
+          <h1>Floor Map & Prebooking Options</h1>
+          
+          <!-- Date & Time Slot prebooking controls -->
+          <div class="prebook-controls">
+            <div class="control-item">
+              <label for="view-date">Booking Date</label>
+              <input type="date" id="view-date">
+            </div>
+            <div class="control-item">
+              <label for="view-time-slot">Dining Time Slot</label>
+              <select id="view-time-slot">
+                <option value="12:00 PM - 02:00 PM">Lunch (12:00 PM - 02:00 PM)</option>
+                <option value="02:00 PM - 04:00 PM">Afternoon (02:00 PM - 04:00 PM)</option>
+                <option value="06:00 PM - 08:00 PM" selected>Dinner (06:00 PM - 08:00 PM)</option>
+                <option value="08:00 PM - 10:00 PM">Late Night (08:00 PM - 10:00 PM)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-controls">
+          <!-- Search Box -->
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search my bookings or tables...">
+            <span class="search-icon">🔍</span>
+          </div>
+
+          <!-- Status Filters -->
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="available">Available</button>
+            <button class="filter-tab" data-filter="reserved">Reserved</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Floor Map Grid -->
+      <section class="floor-map-container">
+        <!-- Visual Floor Legend -->
+        <div class="floor-legend">
+          <div class="legend-item">
+            <span class="legend-color available"></span>
+            <span>Available</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color reserved"></span>
+            <span>Reserved</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color selected"></span>
+            <span>Selected</span>
+          </div>
+        </div>
+
+        <!-- The Floor Grid Layout -->
+        <div class="floor-plan" id="floor-plan">
+          <!-- 20 tables generated dynamically by JavaScript for flexibility and clean structure -->
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- Script File -->
+  <script src="app.js"></script>
+</body>
+</html>
